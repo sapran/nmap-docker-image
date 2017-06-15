@@ -1,7 +1,7 @@
 # https://hub.docker.com/_/alpine
 FROM alpine:3.6
 
-MAINTAINER Instrumentisto Team <developer@instrumentisto.com>
+MAINTAINER sapran <sapran@protonmail.com>
 
 
 # Install dependencies
@@ -20,9 +20,10 @@ RUN apk add --update --no-cache --virtual .build-deps \
         autoconf g++ libtool make \
         curl \
 
- && curl -fL -o /tmp/nmap.tar.bz2 \
-         https://nmap.org/dist/nmap-7.50.tar.bz2 \
- && tar -xjf /tmp/nmap.tar.bz2 -C /tmp \
+ #&& curl -fL -o /tmp/nmap.tar.bz2 \
+ #        https://nmap.org/dist/nmap-7.50.tar.bz2 \
+ && git clone https://github.com/nmap/nmap /tmp/nmap \
+ #&& tar -xjf /tmp/nmap.tar.bz2 -C /tmp \
  && cd /tmp/nmap* \
  && ./configure \
         --prefix=/usr \
